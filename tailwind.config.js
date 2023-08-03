@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily : {
+        primaryFont : ['Montserrat', 'sans-serif'],
+        secondaryFont :['Dancing Script', "cursive"],
+        nameFont : ['Victor Mono', "monospace"]
+      }
+    },
   },
   plugins: [],
 }
