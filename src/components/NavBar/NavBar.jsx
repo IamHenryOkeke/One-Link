@@ -7,13 +7,22 @@ import { Transition } from '@headlessui/react'
 const NavBar = () => {
   const [showNav, setShowNav] = useState(false);
 
-  const handleNavOpen = () => {
-    setShowNav(true)
+  const handleClick = () => {
+    setShowNav(!showNav)
   }
 
-  const handleNavClose = () => {
-    setShowNav(false)
-  }
+  const FadeIn = ({ delay, children }) => (
+    <Transition.Child
+      enter={`transition-all ease-in-out duration-700 ${delay}`}
+      enterFrom="opacity-0 translate-y-6"
+      enterTo="opacity-100 translate-y-0"
+      leave="transition-all ease-in-out duration-300"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
+    >
+      {children}
+    </Transition.Child>
+  )
   
   return (
     <nav className='fixed z-[50] bg-[#aca4a4] text-black top-0 py-5 px-4 md:px-6 lg:px-60 w-full'>
@@ -32,22 +41,31 @@ const NavBar = () => {
           <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/profile">Profile</Link> </li>
         </ul>
         <div className='md:hidden'>
-            <MenuOpen  onClick = {() => handleNavOpen()} className="fill-white h-6 w-6"/>
+            <MenuOpen  onClick = {() => handleClick()} className="fill-white h-6 w-6"/>
         </div>
-          <Transition
+          <Transition.Root
             show={showNav}
-            className={`${showNav ? "absolute" : "hidden"} z-50 top-0 bg-slate-900  pt-[50%] h-[100vh] opacity-90 w-[100vw]`}
+            className="absolute top-0 bg-slate-900 pt-[50%] h-[100vh] opacity-90 w-[100vw]"
             enter="transform transition ease-in-out duration-500"
             enterFrom="translate-x-full"
             enterTo="translate-x-0"
+            leave="transform transition ease-in-out duration-500 delay-100"
+            leaveFrom="translate-x-0"
+            leaveTo="translate-x-full"
           >
-            <MenuClose onClick = {() => handleNavClose()} className="fill-white h-10 w-10 absolute top-10 left-5"/>
+            <MenuClose onClick = {() => handleClick()} className="fill-white h-10 w-10 absolute top-10 left-5"/>
             <ul className='flex flex-col items-center gap-8 text-3xl text-white'>
-              <li onClick={() => handleNavClose()} className="cursor-pointer"><Link to="/home">Home</Link> </li>
-              <li onClick={() => handleNavClose()} className="cursor-pointer"><Link to="/links">Manage Links</Link> </li>
-              <li onClick={() => handleNavClose()} className="cursor-pointer"><Link to="/profile">Profile</Link> </li>
+              <FadeIn delay="delay-[200ms]">
+                <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/home">Home</Link> </li>
+              </FadeIn>
+              <FadeIn delay="delay-[400ms]">
+                <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/links">Manage Links</Link> </li>
+              </FadeIn>
+              <FadeIn delay="delay-[800ms]">
+                <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/profile">Profile</Link> </li>
+              </FadeIn>
             </ul>
-          </Transition>
+          </Transition.Root>
         </div>
     </nav>
   )
