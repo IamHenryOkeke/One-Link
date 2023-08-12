@@ -1,16 +1,32 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ReactComponent as MenuClose } from '../../assets/svg/menuClose.svg'
 import { ReactComponent as MenuOpen } from '../../assets/svg/menuOpen.svg'
 import { useState } from "react"
 import { Transition } from '@headlessui/react'
+import useUserStatus from '../../utils/useUserStatus'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../firebase'
+
+
 
 const NavBar = () => {
+  const user =  useUserStatus();
   const location = useLocation();
-  console.log(location)
+  const navigate = useNavigate()
   const [showNav, setShowNav] = useState(false);
 
   const handleClick = () => {
     setShowNav(!showNav)
+  }
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const FadeIn = ({ delay, children }) => (
@@ -31,25 +47,42 @@ const NavBar = () => {
       <div className='flex justify-between items-center'>
         <div>
           <a href="/">
-            <p className='font-bold font-secondaryFont text-2xl'>
+            <p className='font-bold text-white font-secondaryFont text-2xl'>
              OneLink©
             </p>
           </a>
         </div>
         {(location.pathname === "/") ? (
           <div className='hidden md:flex gap-8'>
-            <button>Log in </button>
-            <button>Sign up</button>
+            <Link to="/login">
+              <button className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Log in</button>
+            </Link>
+            <Link to="/signup">
+              <button className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Sign up</button>
+            </Link>
           </div>
+        ) : (location.pathname === "/login") ? (
+                <Link to="/signup">
+                  <button className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Sign up</button>
+                </Link>
+        ) : (location.pathname === "/signup") ? (
+                <Link to="/login">
+                  <button className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Log in</button>
+                </Link>
+               
         ) : (
-          <ul className='hidden md:flex gap-8'>
-            <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/home">Home</Link> </li>
-            <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/links">Links</Link> </li>
-            <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/profile">Profile</Link> </li>
-          </ul>
+          <div className='hidden md:flex gap-8 items-center'>
+            <ul className='hidden md:flex gap-8'>
+              <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/profile">Profile</Link> </li>
+              <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/links">Manage Links</Link> </li>
+              <li className="transition-all ease-in-out delay-150 duration-300 cursor-pointer"><Link to="/settings">Settings</Link> </li>
+            </ul>
+            <button onClick={handleSignOut} className='px-4 py-1 bg-blue-600 rounded-md font-bold text-white'>Sign Out</button>
+          </div>
+          
         )}
         
-        <div className='md:hidden'>
+        <div className={(location.pathname === "/login" || location.pathname === "/signup") ? "hidden" : "md:hidden"}>
             <MenuOpen onClick = {() => handleClick()} className="fill-white h-6 w-6"/>
         </div>
           <Transition
@@ -64,22 +97,41 @@ const NavBar = () => {
           >
             <MenuClose onClick = {() => handleClick()} className="fill-white h-10 w-10 absolute top-10 left-5"/>
             {(location.pathname === "/") ? (
-              <div className='flex flex-col items-center gap-8'>
-                <button className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Log in </button>
-                <button className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Sign up</button>
-              </div>
-            ) : (
-              <ul className='flex flex-col items-center gap-8 text-3xl text-white'>
-                <FadeIn delay="delay-[200ms]">
-                  <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/home">Home</Link> </li>
-                </FadeIn>
-                <FadeIn delay="delay-[400ms]">
-                  <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/links">Manage Links</Link> </li>
-                </FadeIn>
-                <FadeIn delay="delay-[800ms]">
-                  <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/profile">Profile</Link> </li>
-                </FadeIn>
-              </ul>
+                  <div className='flex flex-col items-center gap-8'>
+                    <Link to="/login">
+                      <button onClick={() => handleClick()} className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Log in</button>
+                    </Link>
+                    <Link to="/signup">
+                      <button onClick={() => handleClick()} className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Sign up</button>
+                    </Link>
+                  </div>
+                ) : (location.pathname === "/login") ? (
+                        <Link className='flex flex-col items-center' to="/signup">
+                          <button onClick={() => handleClick()} className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Sign up</button>
+                        </Link>
+                ) : (location.pathname === "/signup") ? (
+                        <Link className='flex flex-col items-center' to="/login">
+                          <button onClick={() => handleClick()} className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Log in</button>
+                        </Link>
+                      
+                ) : (
+                  <div className='flex flex-col items-center gap-8 text-3xl text-white'>
+                    <ul className='flex flex-col items-center gap-8'>
+                      <FadeIn delay="delay-[150ms]">
+                        <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/profile">Profile</Link></li>
+                      </FadeIn>
+                      <FadeIn delay="delay-[300ms]">
+                        <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/links">Manage Links</Link></li>
+                      </FadeIn>
+                      <FadeIn delay="delay-[450ms]">
+                        <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/settings">Settings</Link></li>
+                      </FadeIn>
+                    </ul>
+                    <FadeIn delay="delay-[600ms]">
+                      <button onClick={handleSignOut} className='px-5 py-3 bg-blue-600 rounded-md font-bold text-white text-lg'>Sign Out</button>
+                    </FadeIn>
+                  </div>
+              
             )}
           </Transition>
         </div>
