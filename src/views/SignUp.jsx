@@ -80,7 +80,7 @@ const SignUp = () => {
                     <input
                         className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
                         type='text'
-                        name="username"
+                        name="userName"
                         value={formData.userName}
                         onChange={handleOnChange}                                
                         placeholder="Username"
