@@ -10,7 +10,7 @@ const ManageLinks = () => {
         title : "",
         link : "",
     })
-    const [linkObjects, setLinkObjects] = useState([])
+    const [adminLinks, setAdminLinks] = useState([])
     const [showInputField, setShowInputField] = useState(false)
     const user = useUserStatus()
     
@@ -31,7 +31,7 @@ const ManageLinks = () => {
       e.preventDefault();
       try {
         console.log(formData)
-        const docRef = await addDoc(collection(userDataBase, user.displayName), {
+        await addDoc(collection(userDataBase, user.displayName), {
           title: formData.title,
           link: formData.link
         });
@@ -52,7 +52,7 @@ const ManageLinks = () => {
               })
           })
           console.log(links)
-          setLinkObjects(links)
+          setAdminLinks(links)
       } catch (error) {
           console.log(error)
       }
@@ -68,7 +68,7 @@ const ManageLinks = () => {
       <div className='flex flex-col gap-3 items-center'>
         <h1 className='text-center text-xl md:text-4xl font-semibold mt-4'>Manage Links</h1>
         {
-          linkObjects.map((link) => (
+          adminLinks.map((link) => (
             <ManageLinkCard key={link.id} {...link} handleDelete={handleDelete}/>
           ))
         }
