@@ -36,7 +36,7 @@ const LogIn = () => {
         .then((userCredential) => {
             // Signed in
             setLoading(false)
-            navigate("/profile")
+            navigate("/home/admin-links")
         })
         .catch((error) => {
             setLoading(false);
@@ -65,7 +65,7 @@ const LogIn = () => {
     return (
         <main>                     
             <h1 className='text-center text-2xl md:text-4xl font-medium my-3'>Log in to your account</h1>  
-            <div className="bg-indigo-950 text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
+            <div className="bg-[#53b941] mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
             <form className='flex flex-col items-center justify-center md:gap-5 gap-3'>                                                                                            
                     <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
                         <label htmlFor="email-address" className='font-medium'>
@@ -123,7 +123,7 @@ const LogIn = () => {
                         loading ? (
                             <div className='flex gap-2'>
                                 <Loading className="w-5 h-5 animate-spin"/>
-                                <p>Processing</p>
+                                <p>Logging in...</p>
                             </div>
                         ) : (
                             <div>
@@ -143,9 +143,9 @@ const LogIn = () => {
                 <p className='text-center mt-4'>
                     No account yet?
                     <NavLink className= "underline hover:no-underline ml-2" to="/signup" >
-                        Sign in
+                        Sign Up
                     </NavLink>
-                </p>  
+                </p> 
             </div>                                                                          
                                 
         </main>

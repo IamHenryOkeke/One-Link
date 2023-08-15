@@ -13,8 +13,7 @@ const SignUp = () => {
     const [formData, setFormData] = useState({
         email : "",
         password : "",
-        firstName : "",
-        lastName : "",
+        userName : ""
     })
     
     const handleOnChange = (e) => {
@@ -40,11 +39,10 @@ const SignUp = () => {
                                 formData.password
                             )
             await updateProfile(user, {
-                displayName: `${formData.firstName} ${formData.lastName}`,
-                // photoURL : formData.image
+                displayName: formData.userName
             });
             setLoading(false);
-            navigate("/profile");
+            navigate("/home/admin-links");
         } catch (error) {
             const errorCode = error.code;
             console.log(error);
@@ -63,7 +61,7 @@ const SignUp = () => {
     
     const handleOnSubmit = async (e) => {
       e.preventDefault()
-      if(!formData.email || !formData.password || !formData.lastName || !formData.firstName){
+      if(!formData.email || !formData.password || !formData.userName){
         alert('Please fill all the fields')
       }else{
         handleRequest()
@@ -73,33 +71,19 @@ const SignUp = () => {
   return (
     <main>                     
         <h1 className='text-center text-2xl md:text-4xl font-medium my-3'>Sign Up To Our Services</h1>  
-        <div className="bg-indigo-950 text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
+        <div className="bg-[#53b941] text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
             <form className='flex flex-col items-center justify-center md:gap-5 gap-3'> 
                 <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
-                    <label htmlFor="firstName" className='font-medium'>
-                        First name
+                    <label htmlFor="username" className='font-medium'>
+                        Username
                     </label>
                     <input
                         className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
                         type='text'
-                        name="firstName"
-                        value={formData.firstName}
+                        name="username"
+                        value={formData.userName}
                         onChange={handleOnChange}                                
-                        placeholder="First Name"
-                        required                                      
-                    />
-                </div> 
-                <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
-                    <label htmlFor="lastName" className='font-medium'>
-                        Last name
-                    </label>
-                    <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
-                        type='text'
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleOnChange}                                
-                        placeholder="Last Name"
+                        placeholder="Username"
                         required                                      
                     />
                 </div>
