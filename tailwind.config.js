@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        primaryFont : ['Montserrat', 'sans-serif'],
-        secondaryFont :['Dancing Script', "cursive"],
-        nameFont : ['Victor Mono', "monospace"]
+        primaryFont : ['Hyperwave'],
+        secondaryFont :['Dancing Script', "cursive"]
+        
       },
       keyframes : {
         wiggle:{
