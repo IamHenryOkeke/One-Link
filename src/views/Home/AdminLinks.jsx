@@ -8,25 +8,29 @@ import HomeLinkCard from "../../components/Cards/HomeLinkCard"
 
 const AdminLinks = () => {
     const [adminLinks, setAdminLinks] = useState([])
+    const [paraText, setParaText] = useState("")
     const [adminLoading, setAdminLoading] = useState(true)
     const user = useUserStatus()
 
     const getData = async(docRef) => {
-    setAdminLoading(true)
-    try {
-        const response = await getDocs(docRef)
-        let links = [];
-        response.docs.forEach((doc) => {
-            links.push({
-                ...doc.data(), id: doc.id
+        setAdminLoading(true)
+        setParaText("")
+        try {
+            const response = await getDocs(docRef)
+            let links = [];
+            response.docs.forEach((doc) => {
+                links.push({
+                    ...doc.data(), id: doc.id
+                })
             })
-        })
-        console.log(links)
-        setAdminLoading(false)
-        setAdminLinks(links)
-    } catch (error) {
-        console.log(error)
-    }
+            if(links.length === 0){
+                setParaText("No links found")
+            }
+            setAdminLoading(false)
+            setAdminLinks(links)
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     useEffect(() => {
@@ -42,13 +46,11 @@ const AdminLinks = () => {
         user ? (<p className="mx-4 md:mx-8 lg:mx-32 text-xl md:text-4xl font-semibold mt-4">{user.displayName}</p>) : ( <h1 className="h-10 bg-gray-300 rounded-lg w-52 dark:bg-gray-600"></h1>)
         }
         {adminLoading && <LoadingCard/>}
+        <p>{paraText}</p>
         { 
-        (adminLinks.length > 0) ? 
             (adminLinks.map((link) => (
             <HomeLinkCard key={link.id} {...link}/>
             ))) 
-            :  
-        (<p>No links</p>)
         }
     </div>
     )
