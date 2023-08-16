@@ -17,9 +17,9 @@ const ManageLinks = () => {
     const handleDelete = (id) => {
       const docRef = doc(userDataBase, user.displayName, id)
         deleteDoc(docRef).then(() => {
+          getData(collection(userDataBase, user.displayName))
           alert("Deleted successfully")
       })
-      getData(collection(userDataBase, user.displayName))
     }
 
     const handleOnChange = (e) => {
@@ -37,6 +37,11 @@ const ManageLinks = () => {
         });
         setShowInputField(!showInputField)
         getData(collection(userDataBase, user.displayName))
+        setFormData({
+          title : "",
+          link : "",
+        })
+        alert("Added successfully")
       } catch (error) {
         console.error("Error adding document: ", error) 
       }
