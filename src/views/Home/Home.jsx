@@ -7,7 +7,7 @@ const Home = () => {
 
     return (
       <>
-        <div className="flex justify-around text-center py-4">
+        <div className="flex justify-around text-center md:text-xl py-4">
           <Link onClick={() => {
             setAdminState(true)
             setUserState(false)
