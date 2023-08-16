@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Transition } from '@headlessui/react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
+import Logo from "../../assets/images/Logo.png"
 
 const NavBar = () => {
   const location = useLocation();
@@ -39,15 +40,14 @@ const NavBar = () => {
   )
   
   return (
-    <nav className='fixed z-[50] bg-[#070308] text-[#f3e5f6] top-0 py-5 px-4 md:px-6 lg:px-60 w-full'>
+    <nav className='fixed z-[50] bg-[#070308] text-[#f3e5f6] top-0 py-5 px-4 md:px-6 lg:px-60 w-full md:text-lg'>
       <div className='flex justify-between items-center'>
-        <div>
-          <a href="/">
-            <p className='font-secondaryFont font-extrabold text-2xl'>
+        <a href="/" className='flex items-center gap-3'>
+          <img src={Logo} className='h-6 rounded-[50%]' alt="Logo image" />
+          <p className='font-secondaryFont font-extrabold text-2xl'>
              OneLink©
-            </p>
-          </a>
-        </div>
+          </p>
+        </a>
         {(location.pathname === "/") ? (
           <div className='hidden md:flex gap-8'>
             <Link to="/login">
