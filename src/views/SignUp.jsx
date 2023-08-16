@@ -39,7 +39,7 @@ const SignUp = () => {
                                 formData.password
                             )
             await updateProfile(user, {
-                displayName: formData.userName
+                displayName: (formData.userName).toLowerCase()
             });
             setLoading(false);
             navigate("/home/admin-links");
