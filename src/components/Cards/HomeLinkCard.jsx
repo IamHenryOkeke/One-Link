@@ -1,6 +1,6 @@
 const HomeLinkCard = ({title, link}) => {
     return (
-        <a className="bg-slate-700 cursor-pointer p-5 rounded-lg w-[90%] md:w-[60%] flex items-center justify-between" href={link} target="_blank" rel="noreferrer">
+        <a className="bg-slate-700 cursor-pointer p-5 rounded-lg w-[90%] md:w-[60%] lg:w-[40%] flex items-center justify-between" href={link} target="_blank" rel="noreferrer">
             <span className="no-underline hover:underline capitalize font-bold text-sm md:text-lg">
                 {title}
             </span>

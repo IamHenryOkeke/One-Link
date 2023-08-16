@@ -1,6 +1,6 @@
 const ManageLinkCard = ({title, link, id, handleDelete}) => {
     return (
-        <div className="bg-slate-700 cursor-pointer p-5 rounded-lg w-[80%] md:w-[60%] flex items-center justify-between">
+        <div className="bg-slate-700 cursor-pointer p-5 rounded-lg w-[80%] md:w-[60%] lg:w-[40%] flex items-center justify-between">
             <a className="no-underline hover:underline capitalize font-bold text-sm md:text-lg" href={link} target="_blank" rel="noreferrer">
                 {title}
             </a>
