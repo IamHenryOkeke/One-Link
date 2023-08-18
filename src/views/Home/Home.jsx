@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
+
 const Home = () => {
     const [ adminState, setAdminState ] = useState(true)
     const [ userState, setUserState] = useState(false)
@@ -11,7 +12,7 @@ const Home = () => {
           <Link onClick={() => {
             setAdminState(true)
             setUserState(false)
-          }} className={adminState ? "border-b-4 border-b-[#53b941] w-1/2 py-2" : "w-1/2"} to="/home/admin-links">Your Links</Link>
+          }} className={adminState ? "border-b-4 border-b-[#53b941] w-1/2 py-2" : "w-1/2"} to={`/home/admin`} >Your Links</Link>
           <Link onClick={() => {
             setUserState(true)
             setAdminState(false)

@@ -35,8 +35,9 @@ const LogIn = () => {
         signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
             // Signed in
+            console.log(userCredential)
             setLoading(false)
-            navigate("/home/admin-links")
+            navigate("/home/admin")
         })
         .catch((error) => {
             setLoading(false);

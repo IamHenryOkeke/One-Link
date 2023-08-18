@@ -42,7 +42,7 @@ const SignUp = () => {
                 displayName: (formData.userName).toLowerCase()
             });
             setLoading(false);
-            navigate("/home/admin-links");
+            navigate("/home/admin");
         } catch (error) {
             const errorCode = error.code;
             console.log(error);

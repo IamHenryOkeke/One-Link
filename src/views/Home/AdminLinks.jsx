@@ -34,10 +34,10 @@ const AdminLinks = () => {
     };
 
     useEffect(() => {
-    if (user) {
-        const colRef = collection(userDataBase, user.displayName)
-        getData(colRef)
-    }
+        if (user) {
+            const colRef = collection(userDataBase, user.displayName)
+            getData(colRef)
+        }
     }, [user])
 
     return (
