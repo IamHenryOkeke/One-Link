@@ -8,6 +8,7 @@ import Home from "./views/Home/Home"
 import ManageLinks from "./views/ManageLinks"
 import AdminLinks from "./views/Home/AdminLinks"
 import UserLinks from "./views/Home/UserLinks"
+import ResetPassword from "./views/ResetPassword"
 
 
 const App = () => {
@@ -17,13 +18,14 @@ const App = () => {
           <NavBar/>
           <Routes>
             <Route exact path='/' element={<LandingPage/>}/>
-            <Route exact path='/login' element={<LogIn/>}/>
-            <Route exact path='/signup' element={<SignUp/>}/>
+            <Route  path='/login' element={<LogIn/>}/>
+            <Route  path='/signup' element={<SignUp/>}/>
             <Route exact path='/home' element={<Home/>}>
-              <Route exact path="admin" element = {<AdminLinks/>}/>
-              <Route exact path="user-links" element = {<UserLinks/>}/>
+              <Route path="admin" element = {<AdminLinks/>}/>
+              <Route path="user-links" element = {<UserLinks/>}/>
             </Route> 
-            <Route exact path='/manage-links' element={<ManageLinks/>}/> 
+            <Route path='/manage-links' element={<ManageLinks/>}/> 
+            <Route path = "/reset-password" element = {<ResetPassword/>}/>
           </Routes>
           <Footer/>
       </div>
