@@ -48,7 +48,7 @@ const NavBar = () => {
              OneLink©
           </p>
         </a>
-        {(location.pathname === "/") ? (
+        {(location.pathname === "/" || location.pathname === "/reset-password") ? (
           <div className='hidden md:flex gap-8'>
             <Link to="/login">
               <button className='transition-all ease-in-out delay-150 px-5 py-3 bg-[#429334] hover:-translate-y-1 hover:shadow-lg hover:shadow-[#429334] lg:self-start rounded-md font-bold text-white text-lg duration-300'>Log in</button>
@@ -92,7 +92,7 @@ const NavBar = () => {
             leaveTo="translate-x-full"
           >
             <MenuClose onClick = {() => handleClick()} className="fill-white h-10 w-10 absolute top-10 left-5"/>
-            {(location.pathname === "/") ? (
+            {(location.pathname === "/" || location.pathname === "/reset-password") ? (
                   <div className='flex flex-col items-center gap-8'>
                     <Link to="/login">
                       <button onClick={() => handleClick()} className='transition-all ease-in-out delay-150 px-5 py-4 bg-[#429334] hover:-translate-y-1 hover:shadow-lg hover:shadow-[#429334] lg:self-start rounded-md font-bold text-white text-lg duration-300'>Log in</button>
