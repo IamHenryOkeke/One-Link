@@ -69,7 +69,7 @@ const NavBar = () => {
         ) : (
           <div className='hidden md:flex gap-8 items-center'>
             <ul className='hidden md:flex gap-8'>
-              <li className="font-bold transition-all ease-in-out delay-150 hover:text-[#53b941] hover:tracking-widest duration-300 cursor-pointer"><Link to="/home/admin-links">Profile</Link> </li>
+              <li className="font-bold transition-all ease-in-out delay-150 hover:text-[#53b941] hover:tracking-widest duration-300 cursor-pointer"><Link to="/home/admin">Profile</Link> </li>
               <li className="font-bold transition-all ease-in-out delay-150 hover:text-[#53b941] hover:tracking-widest duration-300 cursor-pointer"><Link to="/manage-links">Manage Links</Link></li>
               <li className="font-bold transition-all ease-in-out delay-150 hover:text-[#53b941] hover:tracking-widest duration-300 cursor-pointer"><Link to="/settings">Settings</Link> </li>
             </ul>
@@ -114,7 +114,7 @@ const NavBar = () => {
                   <div className='flex flex-col items-center gap-8 text-3xl text-white'>
                     <ul className='flex flex-col items-center gap-8'>
                       <FadeIn delay="delay-[150ms]">
-                        <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/home/admin-links">Profile</Link></li>
+                        <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/home/admin">Profile</Link></li>
                       </FadeIn>
                       <FadeIn delay="delay-[300ms]">
                         <li onClick={() => handleClick()} className="cursor-pointer"><Link to="/manage-links">Manage Links</Link></li>
