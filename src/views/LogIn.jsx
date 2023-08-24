@@ -67,13 +67,13 @@ const LogIn = () => {
         <main>                     
             <h1 className='text-center text-2xl md:text-4xl font-medium my-3'>Log in to your account</h1>  
             <div className="bg-[#53b941] mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
-            <form className='flex flex-col items-center justify-center md:gap-5 gap-3'>                                                                                            
+            <form className='flex flex-col items-center justify-center md:gap-5 gap-3' onSubmit={handleOnSubmit}>                                                                                            
                     <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
                         <label htmlFor="email-address" className='font-medium'>
                             Email address
                         </label>
                         <input
-                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
+                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
                             type='email'
                             name="email"
                             value={formData.email}
@@ -93,7 +93,7 @@ const LogIn = () => {
                             Password
                         </label>
                         <input
-                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
+                            className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
                             type="password"
                             id = "password"
                             name="password"
@@ -117,8 +117,7 @@ const LogIn = () => {
                             
                     <button
                         className="px-8 py-2 bg-[#aca4a4] rounded-md text-white"
-                        type="submit" 
-                        onClick={handleOnSubmit}                        
+                        type="submit"                        
                     >  
                     {
                         loading ? (
@@ -131,10 +130,8 @@ const LogIn = () => {
                                 Log In
                             </div>
                         )
-                    }
-                                                    
-                    </button>
-                                                                        
+                    }                            
+                    </button>                                                    
                 </form>   
                 <p className='text-center mt-4'>
                     <NavLink className= "underline hover:no-underline ml-2" to="/reset-password" >

@@ -72,13 +72,13 @@ const SignUp = () => {
     <main>                     
         <h1 className='text-center text-2xl md:text-4xl font-medium my-3'>Sign Up To Our Services</h1>  
         <div className="bg-[#53b941] text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
-            <form className='flex flex-col items-center justify-center md:gap-5 gap-3'> 
+            <form className='flex flex-col items-center justify-center md:gap-5 gap-3' onSubmit={handleOnSubmit}> 
                 <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
                     <label htmlFor="username" className='font-medium'>
                         Username
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
                         type='text'
                         name="userName"
                         value={formData.userName}
@@ -92,7 +92,7 @@ const SignUp = () => {
                         Email address
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
                         type='email'
                         name="email"
                         value={formData.email}
@@ -112,7 +112,7 @@ const SignUp = () => {
                         Password
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
                         type="password"
                         id = "password"
                         name="password"
@@ -128,16 +128,16 @@ const SignUp = () => {
                     }
                 </div>  
                 <div>
-                    <label htmlFor="">
-                        <input className='mr-2' type="checkbox" onChange={handleOnCheck}/>  
+                    <label htmlFor="showPassword">
+                        <input 
+                        name="showPassword" className='mr-2' type="checkbox" onChange={handleOnCheck}/>  
                         Show Password?
                     </label>
                                                             
                 </div>      
                 <button
                     className="px-8 py-2 bg-[#aca4a4] rounded-md text-white"
-                    type="submit" 
-                    onClick={handleOnSubmit}                        
+                    type="submit"                         
                 >  
                     {
                         loading ? (
