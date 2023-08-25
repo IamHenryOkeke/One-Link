@@ -66,7 +66,7 @@ const LogIn = () => {
     return (
         <main>                     
             <h1 className='text-center text-2xl md:text-4xl font-medium my-3'>Log in to your account</h1>  
-            <div className="bg-[#53b941] mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
+            <div className="bg-[#0c221f] mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
             <form className='flex flex-col items-center justify-center md:gap-5 gap-3' onSubmit={handleOnSubmit}>                                                                                            
                     <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
                         <label htmlFor="email-address" className='font-medium'>
