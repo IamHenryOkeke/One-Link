@@ -37,14 +37,14 @@ const ResetPassword = () => {
     return (
     <main>                     
         <h1 className='text-center text-2xl md:text-4xl font-medium my-3'>Reset Password</h1>  
-        <div className="bg-[#53b941] text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
+        <div className="bg-[#0c221f] text-white mt-4 rounded-xl md:rounded-none py-4 mx-4 md:mx-0">
             <form className='flex flex-col items-center justify-center md:gap-5 gap-3' onSubmit={handleOnSubmit}>                                                                                           
                 <div className='flex flex-col items-center gap-3 w-full md:w-[80%]'>
                     <label htmlFor="email-address" className='font-medium'>
                         Email address
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
                         type='email'
                         name="email"
                         value={emailValue}
