@@ -78,7 +78,7 @@ const SignUp = () => {
                         Username
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
                         type='text'
                         name="userName"
                         value={formData.userName}
@@ -92,7 +92,7 @@ const SignUp = () => {
                         Email address
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
                         type='email'
                         name="email"
                         value={formData.email}
@@ -112,7 +112,7 @@ const SignUp = () => {
                         Password
                     </label>
                     <input
-                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 invalid:border-red-600 text-black w-[80%] md:w-[50%]'
+                        className='border-2 border-black rounded-md p-2 bg-neutral-1000 text-black w-[80%] md:w-[50%]'
                         type="password"
                         id = "password"
                         name="password"
