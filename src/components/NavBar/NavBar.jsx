@@ -124,7 +124,7 @@ const NavBar = () => {
                       </FadeIn>
                     </ul>
                     <FadeIn delay="delay-[600ms]">
-                      <button onClick={handleSignOut} className='transition-all ease-in-out delay-150 px-5 py-4 bg-[#0c221f] hover:shadow-lg hover:shadow-[#0c221f] lg:self-start rounded-md font-bold text-white text-lg duration-300'>Sign Out</button>
+                      <button onClick={handleSignOut} className='transition-all ease-in-out delay-150 px-5 py-4 bg-[#53b941] hover:shadow-lg hover:shadow-[#0c221f] lg:self-start rounded-md font-bold text-white text-lg duration-300'>Sign Out</button>
                     </FadeIn>
                   </div>
               
